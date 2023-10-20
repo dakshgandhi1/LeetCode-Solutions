@@ -25,7 +25,5 @@ class Solution(object):
         :type root2: TreeNode
         :rtype: bool
         """
-        print(self.getLeaf(root1))
-        print(self.getLeaf(root2))
         return self.getLeaf(root1) == self.getLeaf(root2) 
         
