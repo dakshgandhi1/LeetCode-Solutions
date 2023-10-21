@@ -12,10 +12,11 @@ class Solution(object):
         """
         if not root:
             return None
+        self.invertTree(root.left)
+        self.invertTree(root.right)
         temp = root.left
         root.left = root.right
         root.right = temp
-        self.invertTree(root.left)
-        self.invertTree(root.right)
+
 
         return root
