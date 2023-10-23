@@ -20,9 +20,9 @@ class Solution(object):
                 return root
             a = dfs(root.left, p, q)
             b = dfs(root.right, p, q)
-            if a != None and b != None:
+            if a and b:
                 return root
-            elif a!=None:
+            elif a:
                 return a
             else:
                 return b
