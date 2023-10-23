@@ -16,7 +16,7 @@ class Solution(object):
         def dfs(root, p, q):
             if not root:
                 return None
-            if root.val == p.val or root.val == q.val:
+            if root == p or root == q:
                 return root
             a = dfs(root.left, p, q)
             b = dfs(root.right, p, q)
