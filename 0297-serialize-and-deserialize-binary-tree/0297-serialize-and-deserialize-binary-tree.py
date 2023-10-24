@@ -33,18 +33,18 @@ class Codec:
         """
         if len(data) == 0:
             return None
-        nodes = data.split(",")
+        d = data.split(",")
         self.i = 0
 
         def dfs():
-            if nodes[self.i] == '#':
+            if d[self.i] == '#':
                 self.i += 1
                 return None
-            root = TreeNode(int(nodes[self.i]))
+            node = TreeNode(int(d[self.i]))
             self.i += 1
-            root.left = dfs()
-            root.right = dfs()
-            return root
+            node.left = dfs()
+            node.right = dfs()
+            return node
         return dfs()
 
         
