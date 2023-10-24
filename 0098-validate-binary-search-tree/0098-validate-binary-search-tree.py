@@ -10,15 +10,12 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        inorder = []
-        def dfs(root):
+        def valid(root, left, right):
             if not root:
-                return None
-            dfs(root.left)
-            inorder.append(root.val)
-            dfs(root.right)
+                return True
+            if not (root.val < right and root.val > left):
+                return False
 
-        dfs(root)
-        print(inorder)
-        return inorder == sorted(inorder) and len(inorder) == len(set(inorder))
-        
+            return (valid(root.left, left, root.val) and valid(root.right, root.val, right))
+
+        return valid(root, float("-inf"), float("inf"))
