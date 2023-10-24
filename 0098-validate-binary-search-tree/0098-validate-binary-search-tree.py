@@ -20,5 +20,5 @@ class Solution(object):
 
         dfs(root)
         print(inorder)
-        return inorder == sorted(inorder) and len(inorder) == len(list(set(inorder)))
+        return inorder == sorted(inorder) and len(inorder) == len(set(inorder))
         
