@@ -14,10 +14,15 @@ class Solution(object):
         inorder = []
         def dfs(root):
             if not root:
-                return None
+                return 
             dfs(root.left)
+            try:
+                if len(inorder) >= k:
+                    raise Exception("Found")
+            except:
+                return
             inorder.append(root.val)
             dfs(root.right)
 
         dfs(root)
-        return inorder[k-1]
+        return inorder[-1]
