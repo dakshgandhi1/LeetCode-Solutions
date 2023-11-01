@@ -5,27 +5,29 @@ class Solution:
         """
 
         rows, cols = len(board), len(board[0])
-        visited = set()
 
-        def dfs(r, c, visit):
-            if ((r,c) in visit or r<0 or c<0 or r == rows or c == cols or board[r][c] != 'O'):
+        def dfs(r, c):
+            if (r<0 or c<0 or r == rows or c == cols or board[r][c] != 'O'):
                 return
-            visit.add((r,c))
-            dfs(r+1, c, visit)
-            dfs(r-1, c, visit)
-            dfs(r, c+1, visit)
-            dfs(r, c-1, visit)
+            board[r][c] = "T"
+            dfs(r+1, c)
+            dfs(r-1, c)
+            dfs(r, c+1)
+            dfs(r, c-1)
 
         for c in range(cols):
-            dfs(0, c, visited)
-            dfs(rows-1, c, visited)
+            dfs(0, c)
+            dfs(rows-1, c)
 
         for r in range(rows):
-            dfs(r, 0, visited)
-            dfs(r, cols-1, visited)
+            dfs(r, 0)
+            dfs(r, cols-1)
 
-        print(visited)
         for r in range(rows):
             for c in range(cols):
-                if (r,c) not in visited:
+                if board[r][c] == "O":
                     board[r][c] = "X"
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c] == "T":
+                    board[r][c] = "O"
