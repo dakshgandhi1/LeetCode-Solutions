@@ -5,15 +5,13 @@ class Solution:
         a = {}
         heapq.heapify(dis)
         for [i,j] in points:
-            d = math.sqrt(i*i + j*j)
+            d = (i*i + j*j)
             if d in a:
                 a[d].append([i,j])
             else:
                 a[d] = [[i,j]]
             heapq.heappush(dis, d)
 
-        print(dis)
-        print(a)
         res=[]
         i = 0
         while i < k:
